@@ -1,3 +1,5 @@
+// practica1iteradores.cpp : Defines the entry point for the console application.
+//
 #include "Header.h"
 
 void main()
@@ -82,5 +84,5 @@ void main()
 		std::cout << x << std::endl;
 	}
 
+	system("pause");
 }
-
