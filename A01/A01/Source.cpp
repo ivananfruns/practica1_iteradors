@@ -6,7 +6,11 @@ void main()
 	//VECTOR:*******************************************************************************************************************************************
 	std::cout << "\n*****VECTOR*****\n\n\n";
 
-	std::vector<int> v{ 1,2,3,4,5,6 };
+	std::vector<int> v({ 1,2,3,4,5,6 });
+	std::vector<int> v1; //empty vector
+	std::vector<int> v2(5, 1);// five ints, value 1
+	std::vector<int> v3(v2.begin(), v2.end());// iterating through second
+	std::vector<int> v4(v3);// a copy of third
 
 	//Forward:
 	std::cout << " Iterador Forward:\n\n";
@@ -66,6 +70,15 @@ void main()
 	//DEQUE:*******************************************************************************************************************************************
 	std::cout << "\n\n*****DEQUE*****\n\n\n";
 	std::deque<int> d{ 1,2,3,4,5,6 };
+
+	std::deque<int> d1;// empty deque of ints
+	std::deque<int> d2(5, 1);// five ints, value 1
+	std::deque<int> d3(d2.begin(), d2.end());// iterating through second
+	std::deque<int> d4(d3);// a copy of third
+
+	// the iterator constructor can be used to copy arrays:
+	int myints[] = { 1,2,3,4 };
+	std::deque<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
 
 	//Forward:
 	std::cout << " Iterador Forward:\n\n";
@@ -127,6 +140,10 @@ void main()
 
 	std::cout << "\n\n*****LIST*****\n\n";
 	std::list<int> l{ 1,2,3,4,5,6 };
+	std::list<int> l1;// empty list of ints
+	std::list<int> l2(5, 1);// five ints, value 1
+	std::list<int> l3(l2.begin(), l2.end());// iterating through second
+	std::list<int> l4(l3);// a copy of third
 
 	//Forward:
 	std::cout << " Iterador Forward:\n\n";
@@ -187,6 +204,9 @@ void main()
 	std::cout << "\n\n*****FORWARD_LIST*****\n\n";
 	std::forward_list<int> fl{ 1,2,3,4,5,6 };
 
+	std::forward_list<int> first(4, 23);
+	std::forward_list<int> second(std::move(first));  // move ctor. (fourth wasted)
+
 	//Forward:
 	std::cout << " Iterador Forward:\n\n";
 	for (std::forward_list<int>::iterator it = fl.begin(); it != fl.end(); ++it)
@@ -245,6 +265,9 @@ void main()
 	m["E_cinco"] = 5;
 	m["F_seis"] = 6;
 
+	std::map<std::string, int> m1(m.begin(), m.end());
+	std::map<std::string, int> m2(m1);//constructor per còpia
+
 	//Forward:
 	std::cout << "Iterador Forward:\n\n";
 	for (std::map<std::string, int>::iterator it = m.begin(); it != m.end(); ++it)
@@ -300,6 +323,12 @@ void main()
 	//SET:*******************************************************************************************************************************************
 	std::cout << "\n\n*****SET*****\n\n";
 	std::set<int> s{ 1,2,3,4,5,6 };
+
+	std::set<int> s1;                           // empty set of ints
+	int myints[] = { 10,20,30,40,50 };
+	std::set<int> s2(myints, myints + 5);        // range
+	std::set<int> s3(s2);                  // a copy of second
+	std::set<int> s4(s2.begin(), s2.end());  // iterator ctor.
 
 	//Forward:
 	std::cout << "Iterador Forward:\n\n";
@@ -357,5 +386,20 @@ void main()
 	std::cout << std::endl << std::endl;
 	std::cout << std::endl;
 
+
+	//constructors stack:
+	std::stack<int> st({ 2,3,4,5 });
+	std::cout << st.top();
 	system("pause");
+
+	//constructors queue:
+	std::queue<int> q; //es crida el constructor per default
+
+	//constructors priority queue:
+	std::priority_queue<int> p_q;
+	p_q.push(30);
+	p_q.push(40);
+	p_q.push(50);
+	p_q.push(60);
+	std::priority_queue<int> p_q1(p_q); //per copia
 }
