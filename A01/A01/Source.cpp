@@ -67,12 +67,13 @@ void main()
 	std::cout << "*****DEQUE*****\n\n\n";
 	std::deque<int> d{ 1,2,3,4,5,6 };
 
+	//Forward:
 	std::cout << " Iterador Forward:\n\n";
 	for (std::deque<int>::iterator it = d.begin(); it != d.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl << std::endl;
 
-	// Constant Forward
+	//Constant Forward
 	std::cout << " Iterador Constant Forward:\n\n";
 	for (std::deque<int>::const_iterator it = d.cbegin(); it != d.cend(); ++it)
 		std::cout << *it << " ";
@@ -127,12 +128,13 @@ void main()
 	std::cout << "*****LIST*****\n\n";
 	std::list<int> l{ 1,2,3,4,5,6 };
 
+	//Forward:
 	std::cout << " Iterador Forward:\n\n";
 	for (std::list<int>::iterator it = l.begin(); it != l.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl << std::endl;
 
-	// Constant Forward
+	//Constant Forward
 	std::cout << " Iterador Constant Forward:\n\n";
 	for (std::list<int>::const_iterator it = l.cbegin(); it != l.cend(); ++it)
 		std::cout << *it << " ";
@@ -185,12 +187,13 @@ void main()
 	std::cout << "*****FORWARD_LIST*****\n\n";
 	std::forward_list<int> fl{ 1,2,3,4,5,6 };
 
+	//Forward:
 	std::cout << " Iterador Forward:\n\n";
 	for (std::forward_list<int>::iterator it = fl.begin(); it != fl.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl << std::endl;
 
-	// Constant Forward
+	//Constant Forward
 	std::cout << " Iterador Constant Forward:\n\n";
 	for (std::forward_list<int>::const_iterator it = fl.cbegin(); it != fl.cend(); ++it)
 		std::cout << *it << " ";
@@ -233,28 +236,66 @@ void main()
 
 
 	//MAP:*******************************************************************************************************************************************
-	std::map<char, int> m;
-	m['a'] = 1;
-	m['b'] = 2;
-	m['c'] = 3;
-	m['d'] = 4;
-	m['e'] = 5;
-	m['f'] = 6;
+	std::cout << "*****MAP*****\n\n";
+	std::map<std::string, int> m;//construcció amb size=0
+	m["A_uno"] = 1;
+	m["B_dos"] = 2;
+	m["C_tres"] = 3;
+	m["D_cuatro"] = 4;
+	m["E_cinco"] = 5;
+	m["F_seis"] = 6;
 
-	for (std::map<char, int>::iterator it = m.begin(); it != m.end(); ++it)
-	{
-		std::cout << it->first << "=>" << it->second << std::endl;
-	}
+	//Forward:
+	std::cout << "Iterador Forward:\n\n";
+	for (std::map<std::string, int>::iterator it = m.begin(); it != m.end(); ++it)
+		std::cout << it->first << "=>" << it->second << " ";
 
-	for (std::map<char, int>::reverse_iterator it = m.rbegin(); it != m.rend(); ++it)
-	{
-		std::cout << it->first << "=>" << it->second << std::endl;
-	}
-	for (/*const std::pair<int, char>*/auto &x : m)
-	{
-		std::cout << x.first << "=>" << x.second << std::endl;
-	}
-	std::cout << std::endl;
+	std::cout << "\n\n";
+
+	//Constant Forward:
+	std::cout << "Iterador Constant Forward:\n\n";
+	for (std::map<std::string, int>::const_iterator it = m.cbegin(); it != m.cend(); ++it)
+		std::cout << it->first << "=>" << it->second << " ";
+	std::cout << "\n\n";
+
+	//Backward:
+	std::cout << "Iterador Backward:\n\n";
+	for (std::map<std::string, int>::reverse_iterator it = m.rbegin(); it != m.rend(); ++it)
+		std::cout << it->first << "=>" << it->second << " ";
+	std::cout << "\n\n";
+
+	//Constant Backward:
+	std::cout << "Iterador Constant Backward:\n\n";
+	for (std::map<std::string, int>::const_reverse_iterator it = m.crbegin(); it != m.crend(); ++it)
+		std::cout << it->first << "=>" << it->second << " ";
+	std::cout << "\n\n";
+	
+	//Access by value using a copy:
+	std::cout << " Iterador por copia:\n\n";
+	for (std::pair<std::string,int> e : m)
+		std::cout << e.first << "=>" << e.second << " ";
+	std::cout << "\n\n";
+
+
+	//Access by constant value using a copy:
+	std::cout << " Iterador por copia con un valor constante:\n\n";
+	for (const std::pair<std::string,int> e : m)
+		std::cout << e.first << "=>" << e.second << " ";
+	std::cout << "\n\n";
+
+	//Type inference by reference:
+	/*std::cout << " Iterador por referencia:\n\n";
+	for (std::pair<std::string,int> &e : m)//dóna error, si no és constant, no es pot fer per referència!
+		std::cout << e.first << "=>" << e.second << " ";
+	std::cout << "\n\n";
+	*/
+
+	//Type inference by reference with constant value:
+	std::cout << " Iterador por referencia con valor constante:\n\n";
+	for (const std::pair<std::string, int> &e : m)
+		std::cout << e.first << "=>" << e.second << " ";
+	std::cout << "\n\n";
+
 
 	//SET:*******************************************************************************************************************************************
 	std::set<int> s{ 1,2,3,4,5,6 };

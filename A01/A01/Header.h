@@ -6,3 +6,4 @@
 #include<forward_list>
 #include <map>
 #include <set>
+#include <string>
