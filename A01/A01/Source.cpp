@@ -4,7 +4,7 @@
 void main()
 {
 	//VECTOR:*******************************************************************************************************************************************
-	std::cout << "*****VECTOR*****\n\n\n";
+	std::cout << "\n*****VECTOR*****\n\n\n";
 
 	std::vector<int> v{ 1,2,3,4,5,6 };
 
@@ -52,19 +52,19 @@ void main()
 
 	//Type inference by reference:
 	std::cout << " Iterador por referencia:\n\n";
-	for (int e : v)
+	for (int &e : v)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 	//Type inference by reference with constant value:
 	std::cout << " Iterador por referencia con valor constante:\n\n";
-	for (int e : v)
+	for (const int &e : v)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 
 	//DEQUE:*******************************************************************************************************************************************
-	std::cout << "*****DEQUE*****\n\n\n";
+	std::cout << "\n\n*****DEQUE*****\n\n\n";
 	std::deque<int> d{ 1,2,3,4,5,6 };
 
 	//Forward:
@@ -111,13 +111,13 @@ void main()
 
 	//Type inference by reference:
 	std::cout << " Iterador por referencia:\n\n";
-	for (int e : d)
+	for (int &e : d)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 	//Type inference by reference with constant value:
 	std::cout << " Iterador por referencia con valor constante:\n\n";
-	for (int e : d)
+	for (const int &e : d)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 	std::cout << std::endl;
@@ -125,7 +125,7 @@ void main()
 
 	//LIST:*******************************************************************************************************************************************
 
-	std::cout << "*****LIST*****\n\n";
+	std::cout << "\n\n*****LIST*****\n\n";
 	std::list<int> l{ 1,2,3,4,5,6 };
 
 	//Forward:
@@ -170,13 +170,13 @@ void main()
 
 	//Type inference by reference:
 	std::cout << " Iterador por referencia:\n\n";
-	for (int e : l)
+	for (int &e : l)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 	//Type inference by reference with constant value:
 	std::cout << " Iterador por referencia con valor constante:\n\n";
-	for (int e : l)
+	for (const int &e : l)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 	std::cout << std::endl;
@@ -184,7 +184,7 @@ void main()
 
 	//FORWARD LIST:*******************************************************************************************************************************************
 
-	std::cout << "*****FORWARD_LIST*****\n\n";
+	std::cout << "\n\n*****FORWARD_LIST*****\n\n";
 	std::forward_list<int> fl{ 1,2,3,4,5,6 };
 
 	//Forward:
@@ -223,20 +223,20 @@ void main()
 
 	//Type inference by reference:
 	std::cout << " Iterador por referencia:\n\n";
-	for (int e : fl)
+	for (int &e : fl)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 	//Type inference by reference with constant value:
 	std::cout << " Iterador por referencia con valor constante:\n\n";
-	for (int e : fl)
+	for (const int &e : fl)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 	std::cout << std::endl;
 
 
 	//MAP:*******************************************************************************************************************************************
-	std::cout << "*****MAP*****\n\n";
+	std::cout << "\n\n*****MAP*****\n\n";
 	std::map<std::string, int> m;//construcció amb size=0
 	m["A_uno"] = 1;
 	m["B_dos"] = 2;
@@ -298,21 +298,64 @@ void main()
 
 
 	//SET:*******************************************************************************************************************************************
+	std::cout << "\n\n*****SET*****\n\n";
 	std::set<int> s{ 1,2,3,4,5,6 };
 
+	//Forward:
+	std::cout << "Iterador Forward:\n\n";
 	for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it)
-	{
-		std::cout << *it << std::endl;
-	}
+		std::cout << *it << " ";
+	std::cout << "\n\n";
 
+	//Constant Forward:
+	std::cout << "Iterador Constant Forward:\n\n";
+	for (std::set<int>::iterator it = s.cbegin(); it != s.cend(); ++it)
+		std::cout << *it << " ";
+	std::cout << "\n\n";
+
+	//Backward:
+	std::cout << "Iterador Backward:\n\n";
 	for (std::set<int>::reverse_iterator it = s.rbegin(); it != s.rend(); ++it)
-	{
-		std::cout << *it << std::endl;
-	}
-	for (const int &x : s)
-	{
-		std::cout << x << std::endl;
-	}
+		std::cout << *it << " ";
+	std::cout << "\n\n";
+
+	//Constant Backward:
+	std::cout << "Iterador Constant Backward:\n\n";
+	for (std::set<int>::const_reverse_iterator it = s.crbegin(); it != s.crend(); ++it)
+		std::cout << *it<<" ";
+	std::cout << "\n\n";
+
+
+	//Random Access:
+	std::cout << " Iterador Random Access:\n No tiene.\n\n";
+
+
+	//Access by value using a copy:
+	std::cout << " Iterador por copia:\n\n";
+	for (int e : s)
+		std::cout << e << " ";
+	std::cout << std::endl << std::endl;
+
+	//Access by constant value using a copy:
+	std::cout << " Iterador por copia con un valor constante:\n\n";
+	for (const int e : s)
+		std::cout << e << " ";
+	std::cout << std::endl << std::endl;
+
+	//Type inference by reference:
+	/*
+	std::cout << " Iterador por referencia:\n\n";
+	for (int &e : s)//tampoc funciona si no és constant per referència.
+		std::cout << e << " ";
+	std::cout << std::endl << std::endl;
+	*/
+
+	//Type inference by reference with constant value:
+	std::cout << " Iterador por referencia con valor constante:\n\n";
+	for (const int &e : s)
+		std::cout << e << " ";
+	std::cout << std::endl << std::endl;
+	std::cout << std::endl;
 
 	system("pause");
 }
