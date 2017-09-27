@@ -156,25 +156,25 @@ void main()
 
 	//Access by value using a copy:
 	std::cout << " Iterador por copia:\n\n";
-	for (int e : d)
+	for (int e : l)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 	//Access by constant value using a copy:
 	std::cout << " Iterador por copia con un valor constante:\n\n";
-	for (const int e : d)
+	for (const int e : l)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 	//Type inference by reference:
 	std::cout << " Iterador por referencia:\n\n";
-	for (int e : d)
+	for (int e : l)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 	//Type inference by reference with constant value:
 	std::cout << " Iterador por referencia con valor constante:\n\n";
-	for (int e : d)
+	for (int e : l)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 	std::cout << std::endl;
@@ -208,25 +208,25 @@ void main()
 
 	//Access by value using a copy:
 	std::cout << " Iterador por copia:\n\n";
-	for (int e : d)
+	for (int e : fl)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 	//Access by constant value using a copy:
 	std::cout << " Iterador por copia con un valor constante:\n\n";
-	for (const int e : d)
+	for (const int e : fl)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 	//Type inference by reference:
 	std::cout << " Iterador por referencia:\n\n";
-	for (int e : d)
+	for (int e : fl)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 
 	//Type inference by reference with constant value:
 	std::cout << " Iterador por referencia con valor constante:\n\n";
-	for (int e : d)
+	for (int e : fl)
 		std::cout << e << " ";
 	std::cout << std::endl << std::endl;
 	std::cout << std::endl;
